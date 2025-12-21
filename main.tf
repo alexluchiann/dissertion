@@ -36,6 +36,27 @@ module "vm" {
       flavor_name = var.flavor_name
       key_pair = var.key_pair
       security_groups = ["sg_control_plane"]
+    },
+    {
+      name  = var.worker_1_name
+      image_id = var.image_id
+      flavor_name = var.flavor_name
+      key_pair = var.key_pair
+      security_groups = ["sg_worker_nodes"]
+    },
+        {
+      name  = var.worker_2_name
+      image_id = var.image_id
+      flavor_name = var.flavor_name
+      key_pair = var.key_pair
+      security_groups = ["sg_worker_nodes"]
+    },
+        {
+      name  = var.worker_3_name
+      image_id = var.image_id
+      flavor_name = var.flavor_name
+      key_pair = var.key_pair
+      security_groups = ["sg_worker_nodes"]
     }
   ]
 }

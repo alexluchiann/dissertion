@@ -11,3 +11,6 @@ variable "network_admin_state" {}
 variable "external_network_id" {}
 variable "remote_ip_allowed" {}
 variable "key_pair" {}
+variable "worker_1_name" {}
+variable "worker_2_name" {}
+variable "worker_3_name" {}
