@@ -9,3 +9,4 @@ variable "direction_sg_cp" { default = "ingress"}
 variable "remote_ip_allowed" {}
 variable "ethertype" { default = "IPv4" }
 variable "sg_workers" { default = "sg_worker_nodes"}
+variable "sg_bastion" { default = "sg_bastion" }

@@ -27,36 +27,51 @@ module "network" {
 }
 
 module "vm" {
-  source  = "./modules/vm"
-  network_id = module.network.network_id
+  source = "./modules/vm"
+
+  network_id            = module.network.network_id
+  external_network_name = var.external_network_name
+
   vm_details = [
     {
-      name  = "control-plane"
-      image_id = var.image_id
-      flavor_name = var.flavor_name
-      key_pair = var.key_pair
-      security_groups = ["sg_control_plane"]
+      name            = "bastion"
+      image_id        = var.image_id
+      flavor_name     = var.flavor_name
+      key_pair        = var.key_pair
+      security_groups = ["sg_bastion"]
+      floating_ip     = true
     },
     {
-      name  = var.worker_1_name
-      image_id = var.image_id
-      flavor_name = var.flavor_name
-      key_pair = var.key_pair
-      security_groups = ["sg_worker_nodes"]
+      name            = "control-plane"
+      image_id        = var.image_id
+      flavor_name     = var.flavor_name
+      key_pair        = var.key_pair
+      security_groups = ["sg_control_plane"]
+      floating_ip     = false
     },
-        {
-      name  = var.worker_2_name
-      image_id = var.image_id
-      flavor_name = var.flavor_name
-      key_pair = var.key_pair
+    {
+      name            = var.worker_1_name
+      image_id        = var.image_id
+      flavor_name     = var.flavor_name
+      key_pair        = var.key_pair
       security_groups = ["sg_worker_nodes"]
+      floating_ip     = false
     },
-        {
-      name  = var.worker_3_name
-      image_id = var.image_id
-      flavor_name = var.flavor_name
-      key_pair = var.key_pair
+    {
+      name            = var.worker_2_name
+      image_id        = var.image_id
+      flavor_name     = var.flavor_name
+      key_pair        = var.key_pair
       security_groups = ["sg_worker_nodes"]
+      floating_ip     = false
+    },
+    {
+      name            = var.worker_3_name
+      image_id        = var.image_id
+      flavor_name     = var.flavor_name
+      key_pair        = var.key_pair
+      security_groups = ["sg_worker_nodes"]
+      floating_ip     = false
     }
   ]
 }

@@ -14,3 +14,5 @@ variable "key_pair" {}
 variable "worker_1_name" {}
 variable "worker_2_name" {}
 variable "worker_3_name" {}
+variable "external_network_name" {}
+
