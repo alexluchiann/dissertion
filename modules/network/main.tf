@@ -18,6 +18,10 @@ resource "openstack_networking_subnet_v2" "k8s_subnet" {
     cidr        = var.k8s_sub_cidr
     ip_version  = 4
     enable_dhcp = true
+    dns_nameservers = [
+    "8.8.8.8",
+    "1.1.1.1"
+  ]
 }
 
 resource "openstack_networking_router_v2" "k8s_router" {
